@@ -59,7 +59,15 @@ def read(*me):
     time.sleep(2)
     
 
-    
+
+def clear():
+    global myname
+    url='http://noaddress.x10.mx/chat/index.php?user='
+    url+= myname
+    url+="&text=content-deleted"
+    response = urllib2.urlopen(url)
+    html = response.read() 
+    return    
     
 
 
@@ -144,16 +152,11 @@ def startclient():
   b = Button(master, text="SEND", width=10, command=send)
   b.pack()
   b.place(x=400, y=450)
+  bclear = Button(master, text="Clear All", width=10, command=clear)
+  bclear.pack()
+  bclear.place(x=550, y=450)
 
 
-
-def clear():
-    url='http://noaddress.x10.mx/chat/index.php?user='
-    url+= user
-    url+="&text=content-deleted"
-    response = urllib2.urlopen(url)
-    html = response.read() 
-    return
 
 
 def display():
